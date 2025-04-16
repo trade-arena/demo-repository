@@ -1,7 +1,8 @@
 # 🚀 Trade Arena - Fluxo de Branches (GitFlow Simplificado)
 
 ## 📌 Branches principais
-- `main`: Branch de **produção**. Código testado, validado e pronto para deploy.
+- `main`: Branch **demo**. Código que será testado em uma rota de testes em produção. Os testes serão feitos internamente e por alguns usuários externos.
+- `production`: Branch de **produção**. Código testado, validado e pronto para deploy. O código dessa branch subirá automaticamente para pipeline de deploy.
 - `develop`: Branch de **desenvolvimento**. Tudo que estiver em desenvolvimento e precisa de testes entra aqui.
 
 ## 📌 Branches de funcionalidade
@@ -34,17 +35,17 @@ git push origin feature/nome-da-feature
 
 3. Realizar os testes necessários.
 
-4. Quando validado, realizar o merge da `develop` na `main` para publicação em produção.
+4. Quando validado, realizar o merge da `develop` na `main` para publicação na rota de testes em produção.
 
 ---
 
-## 📌 Futuro - Implementação da `release`
-- A branch `release` será criada para homologar funcionalidades antes da `main`.
+## 📌 Branch `main`
+- A branch `main` é voltada para homologar funcionalidades antes da `production`.
 ```mermaid
 graph TD;
   A[feature/xpto] --> B[develop];
-  B --> C[release];
-  C --> D[main];
+  B --> C[main];
+  C --> D[production];
 ```
 
 ---
@@ -60,7 +61,7 @@ refactor: descrição da refatoração
 ---
 
 ## 📌 Regras Gerais
-- Nunca realizar `push` diretamente na `main`
+- Nunca realizar `push` diretamente na `main` ou `production`
 - Sempre trabalhar com `Pull Request`
 - Validar o código antes de fazer merge na `main`
 - Manter o padrão de nomenclatura e commits
